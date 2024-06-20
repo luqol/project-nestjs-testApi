@@ -2,9 +2,9 @@ import { IsNotEmpty, IsString, Length, IsInt, Min } from "class-validator";
 import { Transform } from 'class-transformer';
 
 export class CreateProductDTO  {
-  @IsNotEmpty()
-  @IsString()
-  @Length(10, 20)
+    @IsNotEmpty()
+    @IsString()
+    @Length(10, 20)
     name: string;
 
     @IsNotEmpty()
