@@ -1,4 +1,3 @@
-import { ParseUUIDPipe } from "@nestjs/common";
 import { IsNotEmpty, IsString } from "class-validator";
 
 export class UpdateOrderDTO {

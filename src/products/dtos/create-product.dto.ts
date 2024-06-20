@@ -4,7 +4,7 @@ import { Transform } from 'class-transformer';
 export class CreateProductDTO  {
     @IsNotEmpty()
     @IsString()
-    @Length(10, 20)
+    @Length(5, 20)
     name: string;
 
     @IsNotEmpty()
@@ -14,6 +14,6 @@ export class CreateProductDTO  {
 
     @IsNotEmpty()
     @IsString()
-    @Transform(({ value }) => (Array.isArray(value) ? value.join(', ') : ''))
+    //@Transform(({ value }) => (Array.isArray(value) ? value.join(', ') : ''))
     description: string;
   };
