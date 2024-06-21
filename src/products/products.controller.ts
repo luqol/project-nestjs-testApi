@@ -11,6 +11,12 @@ export class ProductsController {
     getAll(): any {
         return this.productsService.getAll();
     }
+
+    @Get('/extended')
+    getAllExtended(): any {
+        return this.productsService.getAllExended();
+    }
+
     @Get('/:id')
     async getById(@Param('id', new ParseUUIDPipe()) id: string) {
         const prod = await this.productsService.getById(id);
@@ -18,6 +24,15 @@ export class ProductsController {
             throw new NotFoundException('Product not found');
         return prod;
     }
+
+    @Get('/extended/:id')
+    async getByIdExtended(@Param('id', new ParseUUIDPipe()) id: string) {
+        const prod = await this.productsService.getByIdExteded(id);
+        if( !prod)
+            throw new NotFoundException('Product not found');
+        return prod;
+    }
+
     @Delete('/:id')
     async deleteById(@Param('id', new ParseUUIDPipe()) id: string){
         if( !( await this.productsService.getById(id)))

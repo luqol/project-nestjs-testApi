@@ -14,6 +14,18 @@ export class ProductsService {
             where: { id },
         });
     }
+    public getAllExended(): Promise<Product[]> {
+        return this.prismaService.product.findMany( {include: {orders: true}});
+    }
+
+    public getByIdExteded(id: Product['id']): Promise<Product> | null {
+        return this.prismaService.product.findUnique({
+            where: { id },
+            include: { orders: true }
+        });
+    }
+ 
+
     public deleteById(id: Product['id']): Promise<Product> {
         return this.prismaService.product.delete({
             where: { id },
